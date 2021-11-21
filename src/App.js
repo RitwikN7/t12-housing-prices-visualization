@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css"; /* optional for styling like the :hover pseudo-class */
+import USAMap from "react-usa-map";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    /* mandatory */
+    mapHandler = (event) => {
+        alert(event.target.dataset.name);
+    };
+
+    /* optional customization of filling per state and calling custom callbacks per state */
+    statesCustomConfig = () => {
+        return {
+            NJ: {
+                fill: "navy",
+                clickHandler: (event) =>
+                    console.log("Custom handler for NJ", event.target.dataset),
+            },
+            NY: {
+                fill: "#CC0000",
+            },
+        };
+    };
+
+    render() {
+        return (
+            <div className="App">
+                <USAMap
+                    customize={this.statesCustomConfig()}
+                    onClick={this.mapHandler}
+                />
+            </div>
+        );
+    }
 }
 
 export default App;
