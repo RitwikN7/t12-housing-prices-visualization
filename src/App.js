@@ -10,6 +10,7 @@ class App extends Component {
 
     /* optional customization of filling per state and calling custom callbacks per state */
     statesCustomConfig = () => {
+        // TODO: Refactor to iterate over each state and assign colors on gradient. Needs external functions linked to dataset
         return {
             NJ: {
                 fill: "navy",
