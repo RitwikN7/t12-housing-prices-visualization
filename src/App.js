@@ -62,13 +62,13 @@ class App extends Component {
     };
 
     /* optional customization of filling per state and calling custom callbacks per state */
-    statesCustomConfig = (Year) => {
+    statesCustomConfig = (Year, Quarter) => {
         //alert(HPI[0].State);
         const states = {};
         var Quintiles = this.findQuintile(Year);
 
         for (let i = 0; i < HPI.length; i++){
-            if (HPI[i].Quarter === 1 && HPI[i].Year === Year) {
+            if (HPI[i].Quarter === Quarter && HPI[i].Year === Year) {
                 var element = {}
                 var color = this.findColor(Quintiles, HPI[i].HPI)
                 element.fill = color;
@@ -94,7 +94,7 @@ class App extends Component {
         return (
             <div className="App">
                 <USAMap
-                    customize={this.statesCustomConfig(2000)}
+                    customize={this.statesCustomConfig(2000, 4)}
                     onClick={this.mapHandler}
                 />
                
