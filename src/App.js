@@ -64,6 +64,7 @@ class App extends Component {
     /* optional customization of filling per state and calling custom callbacks per state */
     statesCustomConfig = (Year, Quarter) => {
         //alert(HPI[0].State);
+        console.log("SCC called with: " + Year);
         const states = {};
         var Quintiles = this.findQuintile(Year);
 
@@ -88,16 +89,56 @@ class App extends Component {
             */
 
         
-    };
+    }
+
+    changeMap = () => {
+        console.log("in changeMap");
+        this.setState({});
+        /*
+        if (document.getElementById("myInput") === null){
+            console.log("in null case");
+            return this.statesCustomConfig(1975, 1);
+        }
+        console.log("made it past if statement");
+        var input = document.getElementById("myInput").value;
+        var year = parseInt(input);
+        return this.statesCustomConfig(year, 1);
+        */
+        
+        /*
+        var input = document.getElementById("myInput").value;
+        var year = parseInt(input);
+        var div = document.getElementById("root");
+        var innerDiv = div.childNodes[0];
+        var innerinnerDiv = innerDiv.childNodes[3];
+        var map = innerinnerDiv.childNodes[0];
+        console.log(map);
+        */
+        
+    }
+
 
     render() {
+        var input = document.getElementById("myInput");
+        var year;
+        if (input === null){
+            year = 1975;
+        }
+        else {
+            var inputString = input.value;
+            year = parseInt(inputString);
+        }
         return (
-            <div className="App">
-                <USAMap
-                    customize={this.statesCustomConfig(2000, 4)}
-                    onClick={this.mapHandler}
-                />
+            <div>
+                <input type="text" id="myInput"/>
+                <button type="button" onClick={() => this.changeMap()}>submit</button>
+                <div className="App">
+                    <USAMap
+                        customize={this.statesCustomConfig(year, 1)}
+                        onClick={this.mapHandler}
+                    />
                
+                </div>
             </div>
         );
     }
