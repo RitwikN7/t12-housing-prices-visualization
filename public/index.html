@@ -28,6 +28,7 @@
     </head>
     <body>
         <noscript>You need to enable JavaScript to run this app.</noscript>
+        <h1>t12-housing-prices-visualization</h1>
         <div id="root"></div>
         <!--
       This HTML file is a template.
@@ -38,5 +39,33 @@
 
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
-    --></body>
+    -->
+        <div id="info">
+            <h2>Housing Price Index (HPI)</h2>
+            <p>
+                The House Price Index (HPI) is a broad measure of the movement
+                of single-family property prices in the United States. Aside
+                from serving as an indicator of house price trends, it also
+                functions as an analytical tool for estimating changes in the
+                rates of mortgage defaults, prepayments, and housing
+                affordability. The HPI is one of many economic indicators that
+                investors use to keep a pulse on broader economic trends and
+                potential shifts in the stock market. Hence, it is essential to
+                study the variations and trends in HPI data over the years
+                across the US states. We wanted to create a tool to simplify the
+                process of studying this data using the US map as the base and a
+                color gradient to indicate ranges of HPI.
+            </p>
+            <h2>About the Visualization</h2>
+            <p>
+                The visualization above shows the state-wise HPI for a given
+                year based on a gradient. On hovering, a state will get
+                highlighted and a popup text box will show its full name. On
+                clicking on a state, a graph will appear showing the timeline of
+                HPI value for that state. You can use the text entry box to
+                search for a year and quarter to update the map and color
+                gradient to correspond to that particular year.
+            </p>
+        </div>
+    </body>
 </html>
