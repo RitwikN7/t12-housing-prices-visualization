@@ -1,7 +1,15 @@
 path {
     pointer-events: all;
+    display: flex;
 }
 path:hover {
     opacity: 0.5;
     cursor: pointer;
+}
+#rangeInput {
+    width: 50%;
+}
+#currentYear{
+    text-align: center;
+    font-size: 40px;
 }
