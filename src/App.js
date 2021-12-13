@@ -91,48 +91,43 @@ class App extends Component {
         
     }
 
-    changeMap = () => {
+    changeMap = (year) => {
         console.log("in changeMap");
-        this.setState({});
-        /*
-        if (document.getElementById("myInput") === null){
-            console.log("in null case");
-            return this.statesCustomConfig(1975, 1);
+        var year = 1975;
+        var rangeInput = document.getElementById("rangeInput");
+        if (rangeInput != null){
+            year = rangeInput.value;
+            year = parseInt(year);
         }
-        console.log("made it past if statement");
-        var input = document.getElementById("myInput").value;
-        var year = parseInt(input);
-        return this.statesCustomConfig(year, 1);
-        */
-        
-        /*
-        var input = document.getElementById("myInput").value;
-        var year = parseInt(input);
-        var div = document.getElementById("root");
-        var innerDiv = div.childNodes[0];
-        var innerinnerDiv = innerDiv.childNodes[3];
-        var map = innerinnerDiv.childNodes[0];
-        console.log(map);
-        */
+        document.getElementById("currentYear").innerHTML = year;
+        this.setState({});
         
     }
 
 
     render() {
-        var input = document.getElementById("myInput");
+        //var input = document.getElementById("myInput");
+        var rangeInput = document.getElementById("rangeInput");
         var year;
-        if (input === null){
-            year = 1975;
+        if (rangeInput === null){
+            year= 1975;
         }
         else {
-            var inputString = input.value;
-            year = parseInt(inputString);
+                var inputString = rangeInput.value;
+                year = parseInt(inputString);
         }
         return (
-            <div>
-                <input type="text" id="myInput"/>
-                <button type="button" onClick={() => this.changeMap()}>submit</button>
-                <div className="App">
+            <div id="parent">
+                <h1 id="currentYear"></h1>
+                <input type="range"
+                 min="1975"
+                 max="2021"
+                 defaultValue="1975"
+                 step="1"
+                 id="rangeInput"
+                 onChange={() => this.changeMap()}/>
+                {/* <button type="button" onClick={() => this.changeMap()}>submit</button> */}  
+                <div className="App" id="App">
                     <USAMap
                         customize={this.statesCustomConfig(year, 1)}
                         onClick={this.mapHandler}
