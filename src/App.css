@@ -13,3 +13,55 @@ path:hover {
     text-align: center;
     font-size: 40px;
 }
+#rectangle{
+    width: 12%;
+    height: 40%;
+    border-width: 3px;
+    border-style: solid;
+    border-color: black;
+    position: absolute;
+    top: 45%;
+    left: 79%;
+
+}
+#legendList{
+    text-align: left;
+    list-style-type:square;
+    width: 30px;
+    height: 30px;
+    font-size: 100%;
+}
+.bullet{
+    width: 17%;
+    height: 12%;
+    position: absolute;
+    left: 10%;
+    
+}
+#twenty{
+    background-color: rgb(0, 128, 0);
+    top: 25%
+}
+#fourty{
+    background-color: rgb(114, 170, 0);
+    top: 40%;
+}
+#sixty{
+    background-color: rgb(192, 192, 0);
+    top: 55%
+}
+#eighty{
+    background-color: rgb(223, 112, 0);
+    top: 70%
+}
+#onehundo{
+    background-color: rgb(234, 11, 0);
+    top: 85%;
+}
+.legendNum{
+    position: absolute;
+    left: 200%;
+    top: -60%
+}
+
+
