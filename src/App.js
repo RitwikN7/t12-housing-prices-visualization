@@ -8,11 +8,15 @@ class App extends Component {
     findQuintile = (Year) => {
         const HPIData = [];
         for (let i = 0; i < HPI.length; i++) {
-            if (HPI[i].Year === Year) {
+            if (HPI[i].Year === Year && HPI[i].Quarter === 1) {
                 HPIData.push(HPI[i].HPI);
             }
         }
-        HPIData.sort();
+        HPIData.sort(function(a, b) {
+            return a - b;
+          });
+        var lowest = HPIData[1];
+        var highest = HPIData[HPIData.length-1];
         const Quintiles = [];
         var size = HPIData.length;
         var firstIndex = Math.floor(0.2 * (size + 1))
@@ -29,7 +33,8 @@ class App extends Component {
         Quintiles[1] = second;
         Quintiles[2] = third;
         Quintiles[3] = fourth;
-
+        Quintiles[4] = lowest;
+        Quintiles[5] = highest;
         return Quintiles;
         
     }
@@ -91,7 +96,7 @@ class App extends Component {
         
     }
 
-    changeMap = (year) => {
+    changeMap = () => {
         console.log("in changeMap");
         var year = 1975;
         var rangeInput = document.getElementById("rangeInput");
@@ -100,9 +105,62 @@ class App extends Component {
             year = parseInt(year);
         }
         document.getElementById("currentYear").innerHTML = year;
+        var quintiles = this.findQuintile(year);
+        let dashString = "-";
+
+        let twentyLow = quintiles[4];
+        twentyLow = parseInt(twentyLow);
+        twentyLow = twentyLow.toString();
+        let twentyHigh = quintiles[0];
+        twentyHigh = parseInt(twentyHigh);
+        twentyHigh = twentyHigh.toString();
+        let twentyStr = twentyLow.concat(dashString);
+        twentyStr = twentyStr.concat(twentyHigh);
+        document.getElementById("textTwenty").innerHTML = twentyStr;
+
+        let fourtyLow = quintiles[0];
+        fourtyLow = parseInt(fourtyLow) + 1;
+        fourtyLow = fourtyLow.toString();
+        let fourtyHigh = quintiles[1];
+        fourtyHigh = parseInt(fourtyHigh);
+        fourtyHigh = fourtyHigh.toString();
+        let fourtyStr = fourtyLow.concat(dashString);
+        fourtyStr = fourtyStr.concat(fourtyHigh);
+        document.getElementById("textFourty").innerHTML = fourtyStr;
+
+        let sixtyLow = quintiles[1];
+        sixtyLow = parseInt(sixtyLow) + 1;
+        sixtyLow = sixtyLow.toString();
+        let sixtyHigh = quintiles[2];
+        sixtyHigh = parseInt(sixtyHigh);
+        sixtyHigh = sixtyHigh.toString();
+        let sixtyStr = sixtyLow.concat(dashString);
+        sixtyStr = sixtyStr.concat(sixtyHigh);
+        document.getElementById("textSixty").innerHTML = sixtyStr;
+
+        let eightyLow = quintiles[2];
+        eightyLow = parseInt(eightyLow) + 1;
+        eightyLow = eightyLow.toString();
+        let eightyHigh = quintiles[3];
+        eightyHigh = parseInt(eightyHigh);
+        eightyHigh = eightyHigh.toString();
+        let eightyStr = eightyLow.concat(dashString);
+        eightyStr = eightyStr.concat(eightyHigh);
+        document.getElementById("textEighty").innerHTML = eightyStr;
+
+        let oneHundoLow = quintiles[3];
+        oneHundoLow = parseInt(oneHundoLow) + 1;
+        oneHundoLow = oneHundoLow.toString();
+        let oneHundoHigh = quintiles[5];
+        oneHundoHigh = parseInt(oneHundoHigh);
+        oneHundoHigh = oneHundoHigh.toString();
+        let oneHundoStr = oneHundoLow.concat(dashString);
+        oneHundoStr = oneHundoStr.concat(oneHundoHigh);
+        document.getElementById("textOneHundo").innerHTML = oneHundoStr;
         this.setState({});
         
     }
+
 
 
     render() {
@@ -118,7 +176,7 @@ class App extends Component {
         }
         return (
             <div id="parent">
-                <h1 id="currentYear"></h1>
+                <h1 id="currentYear">1975</h1>
                 <input type="range"
                  min="1975"
                  max="2021"
@@ -127,6 +185,24 @@ class App extends Component {
                  id="rangeInput"
                  onChange={() => this.changeMap()}/>
                 {/* <button type="button" onClick={() => this.changeMap()}>submit</button> */}  
+                <div id="rectangle">
+                    <h2>Legend</h2>
+                    <div className="bullet" id="twenty">
+                        <h3 className="legendNum" id="textTwenty">0-55 </h3>
+                    </div>
+                    <div className="bullet" id="fourty">
+                        <h3 className="legendNum" id="textFourty">55-62</h3>
+                    </div>
+                    <div className="bullet" id="sixty">
+                        <h3 className="legendNum" id="textSixty">62-66</h3>
+                    </div>
+                    <div className="bullet" id="eighty">
+                        <h3 className="legendNum" id="textEighty">66-70</h3>
+                    </div>
+                    <div className="bullet" id="onehundo">
+                        <h3 className="legendNum" id="textOneHundo">70-80</h3>
+                    </div>
+                </div>
                 <div className="App" id="App">
                     <USAMap
                         customize={this.statesCustomConfig(year, 1)}
