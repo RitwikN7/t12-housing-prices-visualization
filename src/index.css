@@ -16,4 +16,5 @@ code {
 }
 #root {
   text-align: center;
+  position: relative;
 }
