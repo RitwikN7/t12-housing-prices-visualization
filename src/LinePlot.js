@@ -92,7 +92,7 @@ class LinePlot extends React.Component {
                     <option value="WV">West Virginia</option>
                     <option value="WY">Wyoming</option>
                 </select>
-                <ResponsiveContainer width="100%" aspect={3}>
+                <ResponsiveContainer width="80%" aspect={3}>
                     <LineChart data={data} margin={{ right: 300 }}>
                         <XAxis dataKey="Time" interval={"preserveStartEnd"} />
                         <YAxis></YAxis>
