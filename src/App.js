@@ -72,6 +72,7 @@ class App extends Component {
                         " is: " +
                         HPI[i].HPI;
                     alert(message);
+                    break;
                 }
             }
         }
