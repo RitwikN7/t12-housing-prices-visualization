@@ -4,7 +4,10 @@ import USAMap from "react-usa-map";
 import HPI from "./HPI.json";
 
 class App extends Component {
-
+    constructor(props) {
+        super(props);
+        this.state = { Year: 1975 };
+    }
     findQuintile = (Year) => {
         const HPIData = [];
         for (let i = 0; i < HPI.length; i++) {
@@ -12,17 +15,17 @@ class App extends Component {
                 HPIData.push(HPI[i].HPI);
             }
         }
-        HPIData.sort(function(a, b) {
+        HPIData.sort(function (a, b) {
             return a - b;
-          });
+        });
         var lowest = HPIData[1];
-        var highest = HPIData[HPIData.length-1];
+        var highest = HPIData[HPIData.length - 1];
         const Quintiles = [];
         var size = HPIData.length;
-        var firstIndex = Math.floor(0.2 * (size + 1))
-        var secondIndex = Math.floor(0.4 * (size + 1))
-        var thirdIndex = Math.floor(0.6 * (size + 1))
-        var fourthIndex = Math.floor(0.8 * (size + 1))
+        var firstIndex = Math.floor(0.2 * (size + 1));
+        var secondIndex = Math.floor(0.4 * (size + 1));
+        var thirdIndex = Math.floor(0.6 * (size + 1));
+        var fourthIndex = Math.floor(0.8 * (size + 1));
 
         var first = HPIData[firstIndex];
         var second = HPIData[secondIndex];
@@ -36,34 +39,43 @@ class App extends Component {
         Quintiles[4] = lowest;
         Quintiles[5] = highest;
         return Quintiles;
-        
-    }
+    };
 
     findColor = (Quintiles, HPIValue) => {
         var color = "";
         if (HPIValue < Quintiles[0]) {
             color = "#008000";
-        }
-        else if (HPIValue < Quintiles[1]) {
+        } else if (HPIValue < Quintiles[1]) {
             color = "#72AA00";
-        }
-        else if (HPIValue < Quintiles[2]) {
+        } else if (HPIValue < Quintiles[2]) {
             color = "#C0C000";
-        }
-        else if (HPIValue < Quintiles[3]) {
+        } else if (HPIValue < Quintiles[3]) {
             color = "#df7000";
-        }
-        else {
+        } else {
             color = "#EA0B00";
         }
 
         return color;
-
-    }
+    };
 
     /* mandatory */
     mapHandler = (event) => {
-        alert(event.target.dataset.name);
+        var name = event.target.dataset.name;
+        if (name !== "DC") {
+            for (let i = 0; i < HPI.length; i++) {
+                if (HPI[i].Year === this.state.Year && HPI[i].State === name) {
+                    var message =
+                        "The HPI for " +
+                        name +
+                        " in the year " +
+                        this.state.Year +
+                        " is: " +
+                        HPI[i].HPI;
+                    alert(message);
+                }
+            }
+        }
+        //alert(event.target.dataset.name);
     };
 
     /* optional customization of filling per state and calling custom callbacks per state */
@@ -73,17 +85,16 @@ class App extends Component {
         const states = {};
         var Quintiles = this.findQuintile(Year);
 
-        for (let i = 0; i < HPI.length; i++){
+        for (let i = 0; i < HPI.length; i++) {
             if (HPI[i].Quarter === Quarter && HPI[i].Year === Year) {
-                var element = {}
-                var color = this.findColor(Quintiles, HPI[i].HPI)
+                var element = {};
+                var color = this.findColor(Quintiles, HPI[i].HPI);
                 element.fill = color;
                 states[HPI[i].State] = element;
             }
-
         }
         return states;
-            /*NJ: {
+        /*NJ: {
                 fill: "navy",
                 clickHandler: (event) =>
                     console.log("Custom handler for NJ", event.target.dataset),
@@ -92,15 +103,13 @@ class App extends Component {
                 fill: "#CC0000",
             },
             */
-
-        
-    }
+    };
 
     changeMap = () => {
         console.log("in changeMap");
         var year = 1975;
         var rangeInput = document.getElementById("rangeInput");
-        if (rangeInput != null){
+        if (rangeInput != null) {
             year = rangeInput.value;
             year = parseInt(year);
         }
@@ -157,50 +166,58 @@ class App extends Component {
         let oneHundoStr = oneHundoLow.concat(dashString);
         oneHundoStr = oneHundoStr.concat(oneHundoHigh);
         document.getElementById("textOneHundo").innerHTML = oneHundoStr;
-        this.setState({});
-        
-    }
-
-
+        this.setState({ Year: year });
+    };
 
     render() {
         //var input = document.getElementById("myInput");
         var rangeInput = document.getElementById("rangeInput");
         var year;
-        if (rangeInput === null){
-            year= 1975;
-        }
-        else {
-                var inputString = rangeInput.value;
-                year = parseInt(inputString);
+        if (rangeInput === null) {
+            year = 1975;
+        } else {
+            var inputString = rangeInput.value;
+            year = parseInt(inputString);
         }
         return (
             <div id="parent">
                 <h1 id="currentYear">1975</h1>
-                <input type="range"
-                 min="1975"
-                 max="2021"
-                 defaultValue="1975"
-                 step="1"
-                 id="rangeInput"
-                 onChange={() => this.changeMap()}/>
-                {/* <button type="button" onClick={() => this.changeMap()}>submit</button> */}  
+                <input
+                    type="range"
+                    min="1975"
+                    max="2021"
+                    defaultValue="1975"
+                    step="1"
+                    id="rangeInput"
+                    onChange={() => this.changeMap()}
+                />
+                {/* <button type="button" onClick={() => this.changeMap()}>submit</button> */}
                 <div id="rectangle">
                     <h2>Legend</h2>
                     <div className="bullet" id="twenty">
-                        <h3 className="legendNum" id="textTwenty">0-55 </h3>
+                        <h3 className="legendNum" id="textTwenty">
+                            0-55{" "}
+                        </h3>
                     </div>
                     <div className="bullet" id="fourty">
-                        <h3 className="legendNum" id="textFourty">55-62</h3>
+                        <h3 className="legendNum" id="textFourty">
+                            55-62
+                        </h3>
                     </div>
                     <div className="bullet" id="sixty">
-                        <h3 className="legendNum" id="textSixty">62-66</h3>
+                        <h3 className="legendNum" id="textSixty">
+                            62-66
+                        </h3>
                     </div>
                     <div className="bullet" id="eighty">
-                        <h3 className="legendNum" id="textEighty">66-70</h3>
+                        <h3 className="legendNum" id="textEighty">
+                            66-70
+                        </h3>
                     </div>
                     <div className="bullet" id="onehundo">
-                        <h3 className="legendNum" id="textOneHundo">70-80</h3>
+                        <h3 className="legendNum" id="textOneHundo">
+                            70-80
+                        </h3>
                     </div>
                 </div>
                 <div className="App" id="App">
@@ -208,7 +225,6 @@ class App extends Component {
                         customize={this.statesCustomConfig(year, 1)}
                         onClick={this.mapHandler}
                     />
-               
                 </div>
             </div>
         );
