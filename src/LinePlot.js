@@ -35,6 +35,7 @@ class LinePlot extends React.Component {
         var data = this.getPlot(this.state.State);
         return (
             <div>
+                <h2>HPI Graphs By State</h2>
                 <select
                     value={this.state.State}
                     id="myList"
@@ -91,6 +92,15 @@ class LinePlot extends React.Component {
                     <option value="WV">West Virginia</option>
                     <option value="WY">Wyoming</option>
                 </select>
+                <ResponsiveContainer width="100%" aspect={3}>
+                    <LineChart data={data} margin={{ right: 300 }}>
+                        <XAxis dataKey="Time" interval={"preserveStartEnd"} />
+                        <YAxis></YAxis>
+                        <Legend />
+                        <Tooltip />
+                        <Line dataKey="HPI" stroke="red" activeDot={{ r: 8 }} />
+                    </LineChart>
+                </ResponsiveContainer>
             </div>
         );
     }
