@@ -63,5 +63,7 @@ path:hover {
     left: 200%;
     top: -60%
 }
-
+h3{
+    white-space: nowrap;
+}
 
