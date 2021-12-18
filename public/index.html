@@ -62,16 +62,13 @@
             <p>
                 For more information about HPI: 
             </p>
-            <a href=https://www.investopedia.com/terms/h/house-price-index-hpi.asp>investopedia</a>
+            <a href=https://www.investopedia.com/terms/h/house-price-index-hpi.asp>Investopedia</a>
             <h2>About the Visualization</h2>
             <p>
                 The visualization above shows the state-wise HPI for a given
                 year based on a gradient. On hovering, a state will get
                 highlighted and a popup text box will show its full name. On
-                clicking on a state, a graph will appear showing the timeline of
-                HPI value for that state. You can use the text entry box to
-                search for a year and quarter to update the map and color
-                gradient to correspond to that particular year.
+                clicking on a state, an alert will show the HPI value for that state for the respective year.
             </p>
             <h2>How to Use</h2>
             <p>
@@ -81,7 +78,7 @@
                 </p>
                 <h3>Graph Component</h3>
                 <p>
-                    The graph shows different HPI values by state. To change the state shown, press the dropdown tab and select your desired state.
+                    The graph shows different HPI values by state. To change the state shown, press the dropdown tab and select your desired state. The values are according to year and quarter.
                 </p>
 
             </p>
@@ -89,11 +86,11 @@
             <p>
                 <h3>Year: 1980</h3>
                 <p>
-                    When the user places the year to 1980, the entire map becomes one color. This is because the dataset we used normalized the values from the year 1980. 
+                    When the user places the year to 1980, the entire map becomes one color. This is because the dataset we used normalized the values from the year 1980 to 100 for each state. 
                 </p>
                 <h3>Grey Dot Inside Maryland</h3>
                 <p>
-                    Within Maryland lies a grey dot. This dot represents the capital of the United States of America, Washington D.C.
+                    Within Maryland lies a grey dot. This dot represents the capital of the United States of America, Washington D.C. This is a non-interactive element of the map component, and since the dataset doesn't contain data on D.C., it isn't colored and clicking doesn't produce an alert.
                 </p>
             </p>
         </div>
