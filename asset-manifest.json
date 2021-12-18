@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/t12-housing-prices-visualization/static/css/main.67b3270c.chunk.css",
+    "main.js": "/t12-housing-prices-visualization/static/js/main.00fba7fe.chunk.js",
+    "main.js.map": "/t12-housing-prices-visualization/static/js/main.00fba7fe.chunk.js.map",
+    "runtime-main.js": "/t12-housing-prices-visualization/static/js/runtime-main.8da5f681.js",
+    "runtime-main.js.map": "/t12-housing-prices-visualization/static/js/runtime-main.8da5f681.js.map",
+    "static/js/2.e4e78925.chunk.js": "/t12-housing-prices-visualization/static/js/2.e4e78925.chunk.js",
+    "static/js/2.e4e78925.chunk.js.map": "/t12-housing-prices-visualization/static/js/2.e4e78925.chunk.js.map",
+    "static/js/3.862ca6fd.chunk.js": "/t12-housing-prices-visualization/static/js/3.862ca6fd.chunk.js",
+    "static/js/3.862ca6fd.chunk.js.map": "/t12-housing-prices-visualization/static/js/3.862ca6fd.chunk.js.map",
+    "index.html": "/t12-housing-prices-visualization/index.html",
+    "static/css/main.67b3270c.chunk.css.map": "/t12-housing-prices-visualization/static/css/main.67b3270c.chunk.css.map",
+    "static/js/2.e4e78925.chunk.js.LICENSE.txt": "/t12-housing-prices-visualization/static/js/2.e4e78925.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8da5f681.js",
+    "static/js/2.e4e78925.chunk.js",
+    "static/css/main.67b3270c.chunk.css",
+    "static/js/main.00fba7fe.chunk.js"
+  ]
+}
