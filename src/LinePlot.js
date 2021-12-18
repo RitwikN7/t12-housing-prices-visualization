@@ -96,9 +96,13 @@ class LinePlot extends React.Component {
                     <LineChart data={data} margin={{ right: 300 }}>
                         <XAxis dataKey="Time" interval={"preserveStartEnd"} />
                         <YAxis></YAxis>
-                        <Legend />
                         <Tooltip />
-                        <Line dataKey="HPI" stroke="red" activeDot={{ r: 8 }} />
+                        <Line
+                            dataKey="HPI"
+                            stroke="red"
+                            activeDot={{ r: 8 }}
+                            dot={false}
+                        />
                     </LineChart>
                 </ResponsiveContainer>
             </div>
