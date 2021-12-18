@@ -3,7 +3,6 @@ import HPI from "./HPI.json";
 import {
     LineChart,
     ResponsiveContainer,
-    Legend,
     Tooltip,
     Line,
     XAxis,
