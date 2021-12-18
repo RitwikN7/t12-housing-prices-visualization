@@ -15,12 +15,12 @@ path:hover {
 }
 #rectangle{
     width: 12%;
-    height: 40%;
+    height: 20%;
     border-width: 3px;
     border-style: solid;
     border-color: black;
     position: absolute;
-    top: 45%;
+    top: 30%;
     left: 79%;
 
 }
@@ -39,23 +39,23 @@ path:hover {
     
 }
 #twenty{
-    background-color: rgb(0, 128, 0);
+    background-color: #D6E0E8;
     top: 25%
 }
 #fourty{
-    background-color: rgb(114, 170, 0);
+    background-color: #A3BACB;
     top: 40%;
 }
 #sixty{
-    background-color: rgb(192, 192, 0);
+    background-color: #6E91AD;
     top: 55%
 }
 #eighty{
-    background-color: rgb(223, 112, 0);
+    background-color: #38688F;
     top: 70%
 }
 #onehundo{
-    background-color: rgb(234, 11, 0);
+    background-color: #003D6F;
     top: 85%;
 }
 .legendNum{

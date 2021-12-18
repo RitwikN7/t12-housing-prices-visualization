@@ -44,15 +44,15 @@ class App extends Component {
     findColor = (Quintiles, HPIValue) => {
         var color = "";
         if (HPIValue < Quintiles[0]) {
-            color = "#008000";
+            color = "#D6E0E8";
         } else if (HPIValue < Quintiles[1]) {
-            color = "#72AA00";
+            color = "#A3BACB";
         } else if (HPIValue < Quintiles[2]) {
-            color = "#C0C000";
+            color = "#6E91AD";
         } else if (HPIValue < Quintiles[3]) {
-            color = "#df7000";
+            color = "#38688F";
         } else {
-            color = "#EA0B00";
+            color = "#003D6F";
         }
 
         return color;
