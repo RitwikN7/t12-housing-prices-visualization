@@ -36,20 +36,11 @@ Within Maryland lies a grey dot. This dot represents the capital of the United S
 
 ## Instructions
 
-### From Source Files
-
 Required software: npm 8.1.0 or above and Node version 16.13.0 or above.
 
-1. Unzip files and set current working directory to `t12-housing-prices-visualization`.
+1. Unzip files and set current working directory to `t12-housing-prices-visualization-main`.
 2. Run command `npm install` in terminal to install dependencies.
 3. Run command `npm start` to run localhost server.
-
-### From github-pages dev dependency
-
-1. Unzip files and set current working directory to `t12-housing-prices-visualization`.
-2. Run command `npm install` in terminal to install dependencies.
-3. Change `"homepage"` attribute in file `src/package.json` on line 5 to respective github-pages url. For more information, click [here](https://pages.github.com/). Project is already deployed at [ritwikn7.github.io/t12-housing-prices-visualization](http://ritwikn7.github.io/t12-housing-prices-visualization).
-4. From terminal, run command `npm run deploy`.
 
 ## Collaborators
 
